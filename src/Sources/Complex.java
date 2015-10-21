@@ -1,22 +1,23 @@
 package Sources;
+
 public class Complex {
 
-	private Integer reality;
-	private Integer imaginary;
+	private Double reality;
+	private Double imaginary;
 
-	public Integer getReality() {
+	public Double getReality() {
 		return reality;
 	}
 
-	public void setReality(Integer real) {
+	public void setReality(Double real) {
 		reality = real;
 	}
 
-	public Integer getImaginary() {
+	public Double getImaginary() {
 		return imaginary;
 	}
 
-	public void setImaginary(Integer imagin) {
+	public void setImaginary(Double imagin) {
 		imaginary = imagin;
 	}
 
@@ -38,5 +39,31 @@ public class Complex {
 		this.setImaginary((this.getReality() * x.getImaginary())
 				+ (x.getReality() * this.getImaginary()));
 		return this;
+	}
+
+	public Complex sqrComplex() {
+		this.setReality(Math.pow(this.getReality(), 2.0)
+				- Math.pow(this.getImaginary(), 2.0));
+		this.setImaginary(2.0 * this.getImaginary() * this.getReality());
+		return this;
+	}
+
+	public Boolean absCheck() {
+		Double abs = Math.pow(this.getReality(), 2)
+				+ Math.pow(this.getImaginary(), 2);
+		if (abs < 4)
+			return false;
+		else
+			return true;
+	}
+// Method for checking if complex is within  Mandelbrot set
+	public Integer calculateMandelbrot(Complex z, Integer maxIter){
+		Complex tmp=z;
+		for(int i=0; i<maxIter; i++){
+			if(tmp.absCheck()==true)
+				return i;
+			tmp=tmp.sqrComplex().addComplex(z);
+		}
+		return maxIter;
 	}
 }
