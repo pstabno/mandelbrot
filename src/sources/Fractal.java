@@ -4,5 +4,5 @@
 package sources;
 
 public interface Fractal {
-
+	
 }
