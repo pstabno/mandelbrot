@@ -88,7 +88,12 @@ public class Complex {
 		this.setImaginary(getImaginary() * Double.parseDouble(x.toString()));
 		return this;
 	}
-
+	
+	public Complex invertComplex(){
+		this.setImaginary(this.getImaginary()*(-1));
+		return this;
+	}
+	
 	public Complex divideByComplex(Complex x) {
 		this.setReality(((this.getReality() * x.getReality()) + this
 				.getImaginary() * x.getImaginary())
