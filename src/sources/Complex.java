@@ -89,6 +89,16 @@ public class Complex {
 		return this;
 	}
 
+	public Complex divideByComplex(Complex x) {
+		this.setReality(((this.getReality() * x.getReality()) + this
+				.getImaginary() * x.getImaginary())
+				/ (Math.pow(x.getReality(), 2) + Math.pow(x.getImaginary(), 2)));
+		this.setImaginary(((-1 * this.getReality() * x.getImaginary()) + (this
+				.getImaginary() * x.getReality()))
+				/ (Math.pow(x.getReality(), 2) + Math.pow(x.getImaginary(), 2)));
+		return this;
+	}
+
 	public Complex sqrComplex() {
 		this.setReality(Math.pow(this.getReality(), 2.0)
 				- Math.pow(this.getImaginary(), 2.0));
