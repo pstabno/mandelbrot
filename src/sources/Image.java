@@ -4,7 +4,7 @@ public class Image {
 
 	private Integer x;
 	private Integer y;
-//	private Colour color;
+//	private Colour background;
 	
 	public Integer getX() {
 		return x;
