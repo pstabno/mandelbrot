@@ -26,14 +26,7 @@ public class Imag {
             }
         }
     }
-	
-//	public void addBlack(Double x, Double y, Boolean c){
-//		if(c==true)
-//			img.setRGB(Integer.parseInt(x.toString()), Integer.parseInt(y.toString()), 0x000000);
-//		else
-//			img.setRGB(Integer.parseInt(x.toString()), Integer.parseInt(y.toString()), 0xFFFFFF);
-//	}
-	
+
 	public void setPixel(Double x, Double y, Integer col){
 		img.setRGB(Integer.parseInt(x.toString()), Integer.parseInt(y.toString()), col);
 	}
@@ -42,10 +35,17 @@ public class Imag {
         img.setRGB(x,y,col);
     }
 
-    public void saveImage() throws IOException{
+    public void savePbm() throws IOException{
 		ImageIO.write(img, "pbm", new File( "file.pbm"));
 	}
 
+    public void savePpm() throws IOException{
+        ImageIO.write(img, "ppm", new File( "file.ppm"));
+    }
+
+    public void savePgm() throws IOException{
+        ImageIO.write(img, "pgm", new File( "file.pgm"));
+    }
 	public Integer getSizeY(){
 		return img.getHeight();
 	}
