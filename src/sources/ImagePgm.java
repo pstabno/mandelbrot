@@ -15,6 +15,6 @@ public class ImagePgm {
     }
 
     public void savePgm() throws IOException {
-        ImageIO.write(img, "pgm", new File( "file.pgm"));
+        ImageIO.write(img, "bmp", new File( "/home/p/file.bmp"));
     }
 }
