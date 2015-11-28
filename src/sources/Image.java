@@ -1,22 +1,18 @@
 package sources;
 
 import java.awt.image.BufferedImage;
-import java.io.File;
 import java.io.IOException;
 
-import javax.imageio.ImageIO;
-
-public class Imag {
+public class Image {
 
 	private BufferedImage img;
-	private Integer colour;
-	
-	public Imag(Integer x, Integer y, Integer col){
+
+	public Image(Integer x, Integer y, Integer col){
 		img = new BufferedImage(x, y, col);
 	}
 	
-	public Imag(Integer x, Integer y){
-		img = new BufferedImage(x, y, BufferedImage.TYPE_BYTE_GRAY);
+	public Image(Integer x, Integer y){
+		img = new BufferedImage(x, y, BufferedImage.TYPE_INT_RGB);
 	}
 
     public void setBg(Integer c){
@@ -36,25 +32,14 @@ public class Imag {
     }
 
     public void savePbm() throws IOException{
-		ImageIO.write(img, "pbm", new File( "file.pbm"));
+		new ImagePbm(img, img.getWidth(), img.getHeight()).savePbm();
 	}
 
     public void savePpm() throws IOException{
-        ImageIO.write(img, "ppm", new File( "file.ppm"));
+        new ImagePgm(img, img.getWidth(), img.getHeight()).savePgm();
     }
 
     public void savePgm() throws IOException{
-        ImageIO.write(img, "pgm", new File( "file.pgm"));
-    }
-	public Integer getSizeY(){
-		return img.getHeight();
-	}
-
-	public Integer getSizeX(){
-		return img.getWidth();
-	}
-
-    public Integer getPixel(Integer x, Integer y){
-        return img.getRGB(x,y);
+        new ImagePpm(img, img.getWidth(), img.getHeight()).savePpm();
     }
 }
